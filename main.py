@@ -51,7 +51,7 @@ for k in range(256, 266):
 
 class SurfacePerso():
     """
-        Classe permettant de definir une "surface", permet de creer des "zones" afin de hierarchiser 
+        Classe permettant de definir une "surface", permet de creer des "zones" afin de hierarchiser
         l organisation des differents elements
     """
 
@@ -515,12 +515,12 @@ def diagramme():
         rectMessage = message.get_rect()
         screen.blit(message, (lscreen / 2 - rectMessage.w / 2, hscreen / 2))
     else:
+        print("liste non vide")
         for categorie in range(0, len(listCategorie)):
             # on cree une couleur par categorie de facon aleatoire
             couleur = (randint(0, 255), randint(0, 255), randint(0, 255))
             listCouleurCat.append(couleur)
             listeDepenseCat.append(0)
-            print(listCouleurCat)
 
         for trans in listeTransaction:
             if trans.type == True:
@@ -534,6 +534,8 @@ def diagramme():
                 if depense.cat == listCategorie[compteur]:
                     listeDepenseCat[compteur] += depense.montant / depenseTotal
                     trie = True
+                else:
+                    compteur += 1
 
         for categorie in range(0, len(listCategorie)):
             rectCategorie = pygame.Rect(xRect, yRect, longueur * listeDepenseCat[categorie], largueur)
@@ -745,7 +747,7 @@ def Acceuil():
     ###################################################################################################################
 
     ##################################### Acces aux diagrammes ########################################################
-    diagrammeBout = Button(colonneDroite, addInter.dim[0] + 5, posBouttonY=addInter.posY)
+    diagrammeBout = Button(colonneDroite, posBouttonX= addInter.dim[0] + 5, posBouttonY=addInter.posY)
     diagrammeBout.afficherBoutton(texte="Stats")
     ###################################################################################################################
 
